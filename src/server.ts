@@ -1,0 +1,19 @@
+import http, { IncomingMessage, Server, ServerResponse } from "node:http";
+
+const server: Server = http.createServer((req: IncomingMessage,res:ServerResponse)=>{
+    console.log("Server is running....");
+
+    if(req.url ==="/" && req.method == "GET"){
+        res.writeHead(200, {"content-type":"application/json"})
+        res.end(JSON.stringify({
+            message:"Hello from node js with ",
+            path:req.url
+        }))
+    }
+    
+})
+
+server.listen(5000,()=>{
+    console.log(`Server in running On port ${5000}`);
+    
+})
